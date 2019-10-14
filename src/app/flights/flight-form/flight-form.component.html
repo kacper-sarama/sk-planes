@@ -1,1 +1,48 @@
-<p>flight-form works!</p>
+<form [formGroup]="form">
+  <div class="row">
+    <div class="col-sm-8">
+      <mat-form-field>
+        <input matInput placeholder="Code" formControlName="code" />
+      </mat-form-field>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-4">
+      <mat-form-field>
+        <input matInput placeholder="Origin" formControlName="origin" />
+      </mat-form-field>
+    </div>
+    <div class="col-sm-4">
+      <mat-form-field>
+        <input matInput placeholder="Destination" formControlName="destination" />
+      </mat-form-field>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-4">
+      <mat-form-field>
+        <input matInput placeholder="Departure Time" formControlName="departureTime" />
+      </mat-form-field>
+    </div>
+    <div class="col-sm-4">
+      <mat-form-field>
+        <input matInput placeholder="Return Time" formControlName="returnTime" />
+      </mat-form-field>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-8">
+      <textarea
+        matInput
+        placeholder="Additional information"
+        formControlName="additionalInformation"
+      ></textarea>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col">
+      <mat-checkbox formControlName="withSKPlanesDiscount">With SK Discount</mat-checkbox>
+    </div>
+  </div>
+</form>
+<pre> {{ form.value | json }}</pre>
