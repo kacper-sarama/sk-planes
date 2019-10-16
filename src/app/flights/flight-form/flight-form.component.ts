@@ -1,5 +1,6 @@
 import { Component, OnInit } from "@angular/core";
-import { FormBuilder, FormGroup } from "@angular/forms";
+import { FormBuilder, FormGroup, FormArray } from "@angular/forms";
+import { Crew } from "src/app/models/flight.model";
 
 @Component({
   selector: "app-flight-form",
@@ -8,10 +9,37 @@ import { FormBuilder, FormGroup } from "@angular/forms";
 })
 export class FlightFormComponent implements OnInit {
   form: FormGroup;
+  jobs = [
+    { label: "Stewardess", value: "stewardess" },
+    { label: "Senior Cabin Crew", value: "seniorCabinCrew" },
+    { label: "Pilot", value: "pilot" },
+    { label: "Co-Pilot", value: "co_pilot" },
+    { label: "Mechanic", value: "mechanic" }
+  ];
+
   constructor(private formBuilder: FormBuilder) {}
 
   ngOnInit() {
     this.buildForm();
+  }
+
+  get crew() {
+    return this.form.get("crew") as FormArray;
+  }
+
+  addCrewMember() {
+    this.crew.push(this.buildCrewMember());
+  }
+
+  removeCrewMember(index: number) {
+    this.crew.removeAt(index);
+  }
+
+  buildCrewMember() {
+    return this.formBuilder.group({
+      name: "",
+      job: ""
+    });
   }
 
   private buildForm() {
@@ -22,7 +50,8 @@ export class FlightFormComponent implements OnInit {
       returnTime: "",
       code: "",
       additionalInformation: "",
-      withSKPlanesDiscount: false
+      withSKPlanesDiscount: false,
+      crew: this.formBuilder.array([this.buildCrewMember()])
     });
   }
 }
