@@ -2,7 +2,11 @@
   <div class="row">
     <div class="col-sm-8">
       <mat-form-field>
-        <input matInput placeholder="Code" formControlName="code" />
+        <input matInput placeholder="Code" formControlName="code" #codeInput />
+        <mat-error *ngIf="form.get('code').hasError('required')">Code is required</mat-error>
+        <mat-error *ngIf="form.get('code').hasError('minlength')">Minimum length is 4 characters</mat-error>
+        <mat-error *ngIf="form.get('code').hasError('maxlength')">Maximum length is 7 characters</mat-error>
+        <mat-hint [align]="end">{{ codeInput.value.length }} / 7</mat-hint>
       </mat-form-field>
     </div>
   </div>
