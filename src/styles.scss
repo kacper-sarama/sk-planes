@@ -1,4 +1,18 @@
 @import "~@angular/material/prebuilt-themes/indigo-pink.css";
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+.toast-success {
+  background: rgb(86, 241, 86);
+}
+
+.toast-error {
+  background: rgb(241, 104, 86);
+}
+
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
