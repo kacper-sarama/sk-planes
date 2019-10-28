@@ -11,7 +11,7 @@ import { FormGroup } from "@angular/forms";
 })
 export class NewFlightComponent {
   // @ViewChild("flightForm", { static: true, read: FormGroup }) flightForm: FlightFormComponent;
-  @ViewChild("flightForm") flightForm: FlightFormComponent;
+  @ViewChild("flightForm", { static: true }) flightForm: FlightFormComponent;
 
   constructor(
     private dialogRef: MatDialogRef<NewFlightComponent>,
